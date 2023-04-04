@@ -124,4 +124,25 @@ export class UserService {
       .where('users.email_id= :email_id', { email_id: user.email_id })
       .getMany();
   }
+
+  async deleteUser(id: string): Promise<any> {
+    try {
+      const user = await this.userRepository.findOne({
+        where: {
+          id: id,
+        },
+      });
+    
+      if (user) {
+        await this.userRepository.remove(user);
+      return { message: 'User deleted successfully' };
+      } else {
+        return { message: 'User not found' };
+      }
+    } catch (error) {
+       console.log(error);
+       throw new NotFoundException({ error: 'Bad Request' });
+    }
+  }
+
 }

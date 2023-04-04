@@ -64,32 +64,7 @@ export class UserController {
   
   @Delete("/:id")
   deleteUser(@Param("id") id: string) :string{
-      return this.userService.deleteUserService(id);
+      return this.userService.deleteUser(id);
   }
 
-  //     @Get()
-  //     getAllUser() : User[] {
-  //         return this.userService.getAllUser();
-
-  //     }
-
-  //     @Get("/:id")
-  //     getUserById(@Param("id") id: string ) : User {
-  //         return this.userService.getUserById(id);
-  //     }
-
-  //     @Patch()
-  //     updateUser(@Body() user: User): string{
-  //         return this.userService.updateUserService(user);
-  //     }
-
-  //     @Delete("/:id")
-  //     deleteUser(@Param("id") id: string) :string{
-  //         return this.userService.deleteUserService(id);
-  //     }
-
-  //     @Post()
-  //     addUser(@Body( new ValidationPipe()) createUserDto: UserDto): User{
-  //         return this.userService.addUserService(createUserDto);
-  //     }
 }
