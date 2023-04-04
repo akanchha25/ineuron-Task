@@ -20,8 +20,10 @@ import {
 import { User } from './entities/user.entity';
 import { GetUser } from './get-user.decorator';
 import { UserService } from './user.service';
+import { ApiBody, ApiProperty, ApiSecurity, ApiTags } from "@nestjs/swagger";
 
 @Controller('users')
+@ApiTags('User')
 export class UserController {
   constructor(private userService: UserService) {}
 
@@ -30,6 +32,8 @@ export class UserController {
     return this.userService.signUp(createUserDto);
   }
 
+
+  @ApiProperty({description: "this api is user login!"})
   @Post('/signin')
   signIn(
     @Body(ValidationPipe) getCredentialsDto: GetCredentialsDto,
